@@ -2,8 +2,8 @@
 CS 460 – Algorithms: Final Programming Assignment
 The Torchbearer
 
-Student Name: ___________________________
-Student ID:   ___________________________
+Student Name: Jun Law
+Student ID: 132484882
 
 INSTRUCTIONS
 ------------
@@ -25,6 +25,7 @@ import heapq
 # =============================================================================
 
 def explain_problem():
+    ""
     """
     Returns
     -------
@@ -34,7 +35,7 @@ def explain_problem():
 
     TODO
     """
-    return "TODO"
+    return "This problem has an additional constraint: a given set of relic chambers (vertices) must be visited. The algorith must choose which path to take from start to finish following a set of constraints. The path must include all required relic chambers and minimize the amount of fuel consumed. DO LATER"
 
 
 # =============================================================================

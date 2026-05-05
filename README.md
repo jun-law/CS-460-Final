@@ -1,7 +1,7 @@
 # The Torchbearer
 
-**Student Name:** ___________________________
-**Student ID:** ___________________________
+**Student Name:** Jun Law
+**Student ID:** 132484882
 **Course:** CS 460 – Algorithms | Spring 2026
 
 > This README is your project documentation. Write it the way a developer would document
@@ -17,13 +17,13 @@
 > per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
-  _Your answer here._
+  This problem has an additional constraint: a given set of relic chambers (vertices) must be visited. 
 
 - **What decision remains after all inter-location costs are known:**
-  _Your answer here._
+  The algorith must choose which path to take from start to finish following a set of constraints. The path must include all required relic chambers and minimize the amount of fuel consumed. 
 
 - **Why this requires a search over orders (one sentence):**
-  _Your answer here._
+  DO LATER
 
 ---
 
