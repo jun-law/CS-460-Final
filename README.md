@@ -44,11 +44,11 @@
 
 | Property | Your answer |
 |---|---|
-| Data structure name | |
-| What the keys represent | |
-| What the values represent | |
-| Lookup time complexity | |
-| Why O(1) lookup is possible | |
+| Data structure name | Dictionary |
+| What the keys represent | Relic chamber |
+| What the values represent | Fuel needed to get from every source to relic chamber |
+| Lookup time complexity | O(1) |
+| Why O(1) lookup is possible | Dictionaries allow for immediate access when using a key to look up the corresponding value |
 
 ### Part 2c: Precomputation Complexity
 
