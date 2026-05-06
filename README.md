@@ -17,14 +17,14 @@
 > per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
-  This problem has an additional constraint: a given set of relic chambers (vertices) must be visited. 
+  This problem is not a shortest-path problem because it has an additional constraint: a given set of relic chambers (nodes) must be visited. 
 
 - **What decision remains after all inter-location costs are known:**
-  The algorith must choose which path to take from start to finish following a set of constraints. The path must include all required relic chambers and minimize the amount of fuel consumed. 
+  The algorith must choose which path to take from start to finish following a set of constraints. The path must include all required relic chambers that minimizes the amount of fuel consumed. 
 
 - **Why this requires a search over orders (one sentence):**
-  DO LATER
-
+  The algorithm will prioritize exploring the relic chambers that require the least amount of fuel consumption first (weights). This makes sense because the goal is to choose the path that minimizes overall fuel cost. 
+  
 ---
 
 ## Part 2: Precomputation Design

@@ -10,14 +10,15 @@
 
 ---
 
-## Entry 1 – [Date]: Initial Plan
+## Entry 1 – 5/5/26: Initial Plan
 
 > Required. Write this before writing any code. Describe your plan: what you will
 > implement first, what parts you expect to be difficult, and how you plan to test.
 
-_Your entry here._
+First, I will find all valid paths from the start that connect to the required relic chambers and reach the exit, then, I will implement Dijkstra's Algorithm to find the shortest distance from the start to every relic chamber. Using the information I have so far, I will built an optimal path that consumes the least amount of fuel from start to finish that satisfies the given constraints. I expect this step to be the most difficult part of the assignment since it involves tracking multiple things such as the best path so far, the least amount of fuel used, whether the required relic chambers have been visited, etc. To test, I will draw different graphs on my iPad, then run my code on the same inputs to verify my program behaves as expected. 
 
 ---
+
 
 ## Entry 2 – [Date]: [Short description]
 
@@ -49,7 +50,7 @@ _Your entry here._
 
 | Part | Estimated Hours |
 |---|---|
-| Part 1: Problem Analysis | |
+| Part 1: Problem Analysis | 25 minutes |
 | Part 2: Precomputation Design | |
 | Part 3: Algorithm Correctness | |
 | Part 4: Search Design | |
