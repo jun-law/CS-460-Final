@@ -35,8 +35,8 @@
 
 | Source Node Type | Why it is a source |
 |---|---|
-| _node type_ | _one-line reason_ |
-| _node type_ | _one-line reason_ |
+| (char, int) | The algorithm must start running from S, the start node, so it must be the source |
+| (char, int) | _one-line re | 
 
 ### Part 2b: Distance Storage
 
