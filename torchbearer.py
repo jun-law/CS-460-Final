@@ -70,6 +70,7 @@ def select_sources(spawn, relics, exit_node):
 
     # remove duplicates
     sources = set(sources)
+    sources = list(sources)
 
     print(sources)
     return sources
