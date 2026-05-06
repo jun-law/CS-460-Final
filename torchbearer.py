@@ -67,6 +67,10 @@ def select_sources(spawn, relics, exit_node):
 
     # add exit node
     sources.append(exit_node)
+
+    # remove duplicates
+    sources = set(sources)
+
     print(sources)
     return sources
 
@@ -294,6 +298,6 @@ def _run_tests():
 if __name__ == "__main__":
     # _run_tests()
     spawn = 'A'
-    relics = ['B', 'C']
+    relics = ['B', 'C', 'C']
     exit_node = 'F'
     select_sources(spawn, relics, exit_node)
