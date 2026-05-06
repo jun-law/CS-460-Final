@@ -92,23 +92,27 @@ def run_dijkstra(graph, source):
     TODO
     """
 
-    # set all distances to infinity
+    # min distance from source to each node
+    distance = []
+    # set all to infinity
     for key in graph: 
-        key = float('inf')
+        distance = (key, float('inf'))
     
-    # set start node to 0
+    print('testing')
+    print(distance)
+    # set start node to distance 0
     graph[source] = 0
 
     # min heap
-    distance = []
-    heapq.heappush(0, source)
+    heap = []
+    heapq.heappush(heap, (0, source))
 
-    while (len(heapq) != 0):
+    while (not distance):
         # remove element
-        (node_dist, node) = heapq.heappop
+        node_dist, node = heapq.heappop(distance)
 
         # skip non-optimal lengths
-        if node_dist > distance[node]:
+        if node_dist > graph[node]:
             continue
         
         # traverse all neighbors 

@@ -26,7 +26,6 @@ First, I will find all valid paths from the start that connect to the required r
 > you encountered. Describe what went wrong and how you resolved it.
 
 _Your entry here._
-
 ---
 
 ## Entry 3 – [Date]: [Short description]
