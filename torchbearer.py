@@ -19,7 +19,6 @@ Submit this file as: torchbearer.py
 
 import heapq
 
-
 # =============================================================================
 # PART 1
 # =============================================================================
@@ -92,7 +91,35 @@ def run_dijkstra(graph, source):
 
     TODO
     """
-    pass
+
+    # set all distances to infinity
+    for key in graph: 
+        key = float('inf')
+    
+    # set start node to 0
+    graph[source] = 0
+
+    # min heap
+    distance = []
+    heapq.heappush(0, source)
+
+    while (len(heapq) != 0):
+        # remove element
+        (node_dist, node) = heapq.heappop
+
+        # skip non-optimal lengths
+        if node_dist > distance[node]:
+            continue
+        
+        # traverse all neighbors 
+        for neighbor, weight in graph[node]: 
+            # if shorter path to neighbor found, update distance
+            if distance[node] + weight < distance[neighbor]:
+                distance[neighbor] = distance[node] + weight
+                # add neighbor to heap
+                heapq.heappush(neighbor, distance[neighbor])
+
+    return distance
 
 
 def precompute_distances(graph, spawn, relics, exit_node):
@@ -298,7 +325,16 @@ def _run_tests():
 
 if __name__ == "__main__":
     # _run_tests()
-    spawn = 'A'
-    relics = ['B', 'C', 'C']
-    exit_node = 'F'
-    select_sources(spawn, relics, exit_node)
+    
+    # spawn = 'A'
+    # relics = ['B', 'C', 'C']
+    # exit_node = 'F'
+    # select_sources(spawn, relics, exit_node)
+
+    graph_1 = {
+        'S': [('B', 1), ('C', 2), ('D', 2)],
+        'B': [('D', 1), ('T', 1)],
+        'C': [('B', 1), ('T', 1)],
+        'D': [('B', 1), ('C', 1)],
+    }
+    run_dijkstra(graph_1, 'S')

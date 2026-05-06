@@ -46,7 +46,7 @@
 |---|---|
 | Data structure name | Dictionary |
 | What the keys represent | A given source node |
-| What the values represent | A list of neighboring dungeon locations (nodes) to the given source node, each entry hav the neighbor's name (node) and the amount of fuel needed to get to it from the source |
+| What the values represent | A list of neighboring dungeon locations (nodes) to the given source node, each entry having the neighbor's name (node) and the amount of fuel needed to get to it from the source |
 | Lookup time complexity | O(1) |
 | Why O(1) lookup is possible | Dictionaries allow for immediate access when using a key to look up the corresponding value |
 
