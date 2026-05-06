@@ -23,7 +23,7 @@
   The algorith must choose which path to take from start to finish following a set of constraints. The path must include all required relic chambers that minimizes the amount of fuel consumed. 
 
 - **Why this requires a search over orders (one sentence):**
-  The algorithm will prioritize exploring the relic chambers that require the least amount of fuel consumption first (weights). This makes sense because the goal is to choose the path that minimizes overall fuel cost. 
+  The algorithm will prioritize exploring the neighboring dungeon locations that require the least amount of fuel consumption first (weights). This makes sense because the goal is to choose the path that minimizes overall fuel cost. 
   
 ---
 
@@ -35,8 +35,8 @@
 
 | Source Node Type | Why it is a source |
 |---|---|
-| (char, int) | The algorithm must start running from S, the start node, so it must be the source |
-| (char, int) | _one-line re | 
+| (char) | The algorithm must start running from S, the given start node, so it must be a source |
+| (char) | Every chamber relic node is also a source node because the shortest path from it to every other node must be computed in order to ensure each chamber relic is included in the final path | 
 
 ### Part 2b: Distance Storage
 
@@ -45,8 +45,8 @@
 | Property | Your answer |
 |---|---|
 | Data structure name | Dictionary |
-| What the keys represent | Relic chamber |
-| What the values represent | Fuel needed to get from every source to relic chamber |
+| What the keys represent | A given source node |
+| What the values represent | A list of neighboring dungeon locations (nodes) to the given source node, each entry hav the neighbor's name (node) and the amount of fuel needed to get to it from the source |
 | Lookup time complexity | O(1) |
 | Why O(1) lookup is possible | Dictionaries allow for immediate access when using a key to look up the corresponding value |
 

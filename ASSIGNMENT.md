@@ -4,7 +4,7 @@
 **Semester:** Spring 2026
 **Instructor:** Manju Muralidharan Priya
 **Total Points:** 100
-# test commit
+
 ---
 
 ## The World
