@@ -64,9 +64,6 @@ def select_sources(spawn, relics, exit_node):
     for relic in relics:
         sources.append(relic)
 
-    # add exit node
-    sources.append(exit_node)
-
     # remove duplicates
     sources = set(sources)
     sources = list(sources)
