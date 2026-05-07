@@ -183,4 +183,9 @@ _Your answer here._
 
 > Bullet list. If none beyond lecture notes, write that.
 
-- _Your references here._
+- Dijkstra’s Algorithm with Adjacency Lists | by Joshua Clark. Used to better understand how Dijkstra's works with adjacency lists in run_dijkstra(). Verified by running run_dijkstra() after finishing implmentation, which matched the high level concepts in this article. 
+
+- heapq — Heap queue algorithm — Python 3.14.5rc1 documentation. Used to reference how to use heap methods in run_dijkstra(). Verified by testing heapq.push() and heapq.pop() works in my code. 
+
+- Python - Pair iteration in list - GeeksforGeeks. Used to better understand how to traverse pairs in run_dijkstra(). Verified correctness by printing loop for pairs during testing. 
+

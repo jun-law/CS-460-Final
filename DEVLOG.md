@@ -20,7 +20,7 @@ First, I will find all valid paths from the start that connect to the required r
 ---
 
 
-## Entry 2 – [Date]: [Short description]
+## Entry 2 – [5/7/26]: Failing to track distances in run_dijkstra()
 
 > Required. At least one entry must describe a bug, wrong assumption, or design change
 > you encountered. Describe what went wrong and how you resolved it.
@@ -50,7 +50,7 @@ _Your entry here._
 | Part | Estimated Hours |
 |---|---|
 | Part 1: Problem Analysis | 25 minutes |
-| Part 2: Precomputation Design | |
+| Part 2: Precomputation Design | 3.5 hours |
 | Part 3: Algorithm Correctness | |
 | Part 4: Search Design | |
 | Part 5: State and Search Space | |
