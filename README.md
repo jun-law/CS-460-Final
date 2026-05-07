@@ -17,13 +17,13 @@
 > per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
-  This problem is not a shortest-path problem because it has an additional constraint: a given set of relic chambers (nodes) must be visited. 
+  - This problem is not a shortest-path problem because it has an additional constraint: a given set of relic chambers (nodes) must be visited. 
 
 - **What decision remains after all inter-location costs are known:**
-  The algorith must choose which path to take from start to finish following a set of constraints. The path must include all required relic chambers that minimizes the amount of fuel consumed. 
+  - The algorith must choose which path to take from start to finish following a set of constraints. The path must include all required relic chambers that minimizes the amount of fuel consumed. 
 
 - **Why this requires a search over orders (one sentence):**
-  The algorithm will prioritize exploring the neighboring dungeon locations that require the least amount of fuel consumption first (weights). This makes sense because the goal is to choose the path that minimizes overall fuel cost. 
+  - The algorithm will prioritize exploring the neighboring dungeon locations that require the least amount of fuel consumption first (weights). This makes sense because the goal is to choose the path that minimizes overall fuel cost. 
   
 ---
 
@@ -46,7 +46,7 @@
 |---|---|
 | Data structure name | Dictionary |
 | What the keys represent | A given source node |
-| What the values represent | A list of neighboring dungeon locations (nodes) to the given source node, each entry having the neighbor's name (node) and the amount of fuel needed to get to it from the source |
+| What the values represent | A list containing pairs (char, int) representing the neighboring dungeon locations (nodes) to the given source node, and the amount of fuel needed to get to it from the source |
 | Lookup time complexity | O(1) |
 | Why O(1) lookup is possible | Dictionaries allow for immediate access when using a key to look up the corresponding value |
 

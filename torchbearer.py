@@ -101,8 +101,8 @@ def run_dijkstra(graph, source):
             if neighbor not in distance:
                 distance[neighbor] = float('inf')  
     
-    print("testing")
-    print(distance)
+    # print("testing")
+    # print(distance)
 
     # set start node to distance 0
     distance[source] = 0
@@ -115,7 +115,7 @@ def run_dijkstra(graph, source):
         # remove element
         
         curr, u = heapq.heappop(heap)
-        print(f"popped {curr}, {u} from heap")
+        # print(f"popped {curr}, {u} from heap")
 
         # skip non-optimal lengths
         if curr > distance[u]:
@@ -125,20 +125,22 @@ def run_dijkstra(graph, source):
         for v, w in graph[u]: 
             # if shorter path to neighbor found, update distance
             if distance[u] + w < distance[v]:
-                print(f"distance u is {distance[u]}, distance v is {distance[v]}")
+                # print(f"distance u is {distance[u]}, distance v is {distance[v]}")
                 distance[v] = distance[u] + w
-                print(f"adding {distance[v]}, {v} toS heap")
+                # print(f"adding {distance[v]}, {v} toS heap")
                 # add neighbor to heap
                 heapq.heappush(heap, (distance[v], v))
 
-    print("final distances")
-    print(distance)
+    # print("final distances")
+    # print(distance)
     return distance
+
 
 def precompute_distances(graph, spawn, relics, exit_node):
     """
     Parameters
     ----------
+
     graph : dict[node, list[tuple[node, int]]]
     spawn : node
     relics : list[node]
@@ -152,8 +154,21 @@ def precompute_distances(graph, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    # grab source nodes
+    source_list = select_sources(spawn, relics, exit_node)
+    print(f"source list: {source_list}")
 
+    # result of one Dijkstra run
+    result = {}
+    # all results
+    solution_list = {}
+
+    # run Dijkstras on every source
+    for source in source_list:
+        result[source] = run_dijkstra(graph_1, source)
+        solution_list[source] = result
+
+    print(f"final list: {result}")
 
 # =============================================================================
 # PART 3
@@ -337,19 +352,26 @@ def _run_tests():
 
 
 if __name__ == "__main__":
-    # _run_tests()
-    
-    # spawn = 'A'
-    # relics = ['B', 'C', 'C']
-    # exit_node = 'F'
-    # select_sources(spawn, relics, exit_node)
 
+    """
+        _run_tests()
+        
+        spawn = 'A'
+        relics = ['B', 'C', 'C']
+        exit_node = 'F'
+        select_sources(spawn, relics, exit_node)
+
+    """
     graph_1 = {
         'S': [('B', 1), ('C', 2), ('D', 2)],
         'B': [('D', 1), ('T', 1)],
         'C': [('B', 1), ('T', 1)],
         'D': [('B', 1), ('C', 1)],
         'T': []
+        }
+        
+        # run_dijkstra(graph_1, 'S')
+    
+    required_relics = ['B', 'C', 'D']
 
-    }
-    run_dijkstra(graph_1, 'S')
+    precompute_distances(graph_1, 'S', required_relics, 'A')
