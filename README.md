@@ -92,7 +92,7 @@
   - Check all neighbors of current node, if better path found to it from u, update neighbor's distance to smaller value
   - Before next iteration begins: all distances of nodes have updated as appropriate, {P && B} S {P} holds
 
-  do i need to talk about both cases?
+  ***do i need to talk about both cases? mention nonnegative edge weights too
 
 - **Termination : what the invariant guarantees when the algorithm ends:**
   - {P && !B} => R: assume {P && !B} is true
@@ -104,8 +104,7 @@
 
 > One sentence connecting correct distances to correct routing decisions.
 
-_Your answer here._
-
+- Routing decisions will be unable to locate the best path without first knowing the correct shortest distances to each location from the initial starting point.  
 
 ---
 
