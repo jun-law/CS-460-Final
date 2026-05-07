@@ -92,39 +92,51 @@ def run_dijkstra(graph, source):
     TODO
     """
 
-    # min distance from source to each node
-    distance = []
-    # set all to infinity
+    # dictionary: min distance from source to each node
+    distance = {}
+    # set all source nodes to infinity
     for key in graph: 
-        distance = (key, float('inf'))
+        distance[key] = float('inf')
+
+        # add all neighbor nodes of each node
+        for elements in graph[key]:
+            neighbor = elements[0] 
+            if neighbor not in distance:
+                distance[neighbor] = float('inf')  
     
-    print('testing')
+    print("testing")
     print(distance)
+
     # set start node to distance 0
-    graph[source] = 0
+    distance[source] = 0
 
     # min heap
     heap = []
     heapq.heappush(heap, (0, source))
 
-    while (not distance):
+    while (not len(heap) == 0):
         # remove element
-        node_dist, node = heapq.heappop(distance)
+        
+        curr, u = heapq.heappop(heap)
+        print(f"popped {curr}, {u} from heap")
 
         # skip non-optimal lengths
-        if node_dist > graph[node]:
+        if curr > distance[u]:
             continue
         
-        # traverse all neighbors 
-        for neighbor, weight in graph[node]: 
+        # traverse all neighbors of node
+        for v, w in graph[u]: 
             # if shorter path to neighbor found, update distance
-            if distance[node] + weight < distance[neighbor]:
-                distance[neighbor] = distance[node] + weight
+            if distance[u] + w < distance[v]:
+                print(f"distance u is {distance[u]}, distance v is {distance[v]}")
+                distance[v] = distance[u] + w
+                print(f"adding {distance[v]}, {v} to heap")
                 # add neighbor to heap
-                heapq.heappush(neighbor, distance[neighbor])
+                heapq.heappush(heap, (distance[v], v))
 
+    print("final distances")
+    print(distance)
     return distance
-
 
 def precompute_distances(graph, spawn, relics, exit_node):
     """
@@ -340,5 +352,7 @@ if __name__ == "__main__":
         'B': [('D', 1), ('T', 1)],
         'C': [('B', 1), ('T', 1)],
         'D': [('B', 1), ('C', 1)],
+        'T': []
+
     }
     run_dijkstra(graph_1, 'S')
