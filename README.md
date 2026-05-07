@@ -72,10 +72,10 @@
 > Do not copy the invariant text from the spec.
 
 - **For nodes already finalized (in S):**
-  _Your answer here._
+  - At the beginning of each iteration, every finalized node, v in S contains the shortest path, dist[v] possible from the source, x to itself 
 
 - **For nodes not yet finalized (not in S):**
-  _Your answer here._
+  - At the beginning of each iteration, every node, u that has not been finalized yet and is not in S, contains the shortest path found, dist[u] from the source, x to itself, where all nodes in between have been finalized and are in S.
 
 ### Part 3b: Why Each Phase Holds
 
