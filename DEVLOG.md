@@ -26,7 +26,7 @@ First, I will find all valid paths from the start that connect to the required r
 > you encountered. Describe what went wrong and how you resolved it.
 
 _Your entry here._
----
+A bug I encountered in run_dijkstra() was originally not having a data structure to track the distances from the source node. By failing to include this, I did not know how far each node was from the source, so my algorithm failed. In addition, this led me to try to use the heap to manage my distances from the source which is wrong. To fix it, I added a dictionary called distance, which I used to initialize all nodes to distance infinity. If a smaller distance from the source was found for a particular node, its distance would be updated. 
 
 ## Entry 3 – [Date]: [Short description]
 

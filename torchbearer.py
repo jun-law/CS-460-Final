@@ -130,7 +130,7 @@ def run_dijkstra(graph, source):
             if distance[u] + w < distance[v]:
                 print(f"distance u is {distance[u]}, distance v is {distance[v]}")
                 distance[v] = distance[u] + w
-                print(f"adding {distance[v]}, {v} to heap")
+                print(f"adding {distance[v]}, {v} toS heap")
                 # add neighbor to heap
                 heapq.heappush(heap, (distance[v], v))
 
