@@ -166,7 +166,7 @@ def precompute_distances(graph, spawn, required, exit_node):
     # result = {}
     # tracks only necessary paths
     # processed = {}
-    
+
     # all results
     solution_list = {}
 
