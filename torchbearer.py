@@ -59,10 +59,14 @@ def select_sources(spawn, relics, exit_node):
     # add source node
     sources = []
     sources.append(spawn)
+    print(sources)
 
     # add required nodes
     for relic in relics:
         sources.append(relic)
+
+    # add exit node
+    sources.append(exit_node)
 
     # remove duplicates
     sources = set(sources)
@@ -260,8 +264,6 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     explaining why it is safe (cannot skip the optimal solution).
     This comment is graded.
     """
-    pass
-
 
 # =============================================================================
 # PIPELINE
@@ -370,8 +372,6 @@ if __name__ == "__main__":
         'T': []
         }
         
-        # run_dijkstra(graph_1, 'S')
-    
-    required_relics = ['B', 'C', 'D']
-
-    precompute_distances(graph_1, 'S', required_relics, 'A')
+    required = ['B', 'C']
+    select_sources('S', required, 'T')
+    # precompute_distances(graph_1, 'S', required, 'T')

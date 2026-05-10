@@ -23,7 +23,7 @@
   - The algorith must choose which path to take from start to finish following a set of constraints. The path must include all required relic chambers that minimizes the amount of fuel consumed. 
 
 - **Why this requires a search over orders (one sentence):**
-  - The algorithm will prioritize exploring the neighboring dungeon locations that require the least amount of fuel consumption first (weights). This makes sense because the goal is to choose the path that minimizes overall fuel cost. 
+  - The algorithm will prioritize exploring the neighboring dungeon locations that require the least amount of fuel consumption first (weights). This makes sense because the goal is to choose the path that minimizes overall fuel cost. do it for whole algoirthm
   
 ---
 
