@@ -140,7 +140,7 @@ def run_dijkstra(graph, source):
     return distance
 
 
-def precompute_distances(graph, spawn, relics, exit_node):
+def precompute_distances(graph, spawn, required, exit_node):
     """
     Parameters
     ----------
@@ -159,40 +159,38 @@ def precompute_distances(graph, spawn, relics, exit_node):
     TODO
     """
     # grab source nodes
-    source_list = select_sources(spawn, relics, exit_node)
+    source_list = select_sources(spawn, required, exit_node)
     print(f"source list: {source_list}")
 
     # result of one Dijkstra run (all neighbors included)
-    result = {}
+    # result = {}
     # tracks only necessary paths
-    processed = {}
+    # processed = {}
+    
     # all results
     solution_list = {}
 
-    # run Dijkstras on every source
-    for source in source_list:
-        result[source] = run_dijkstra(graph_1, source)
-        
-        print(f"RESULT ISSSSSS {result[source]}")
-        # filter out paths not needed
-        processed[source] = filter_required(result, exit_node, relics)
-        print(f"filtered {processed}")
+    # run Dijkstras on ONE source
+    result = run_dijkstra(graph_1, 'S')
+    print(f"result is: {result}")
+    solution = filter_required(result, exit_node, required)
+    print(solution)
     
-        break
+
     # print(f"final list: {result}")
 
 
 # helper: remove paths containing nodes that are not required
-def filter_required(dict, exit_node, relics):
+def filter_required(dict, exit_node, required):
     
     # track required paths only
     filtered = {}
     # check every required node's neighbor
     for node in dict:
-        print(f"TEST: printing individual nodes {dict[node]}")
-        if (node == exit_node) or (node in relics):
+        print(f"TEST: printing one entry {dict[node]}")
+        if (node == exit_node) or (node in required):
             filtered[node] = dict[node]
-            print(f"adding {filtered[node]}")
+            print(f"added ({node} , {filtered}")
     
     return filtered
 
