@@ -162,24 +162,22 @@ def precompute_distances(graph, spawn, required, exit_node):
     source_list = select_sources(spawn, required, exit_node)
     print(f"source list: {source_list}")
 
-    # result of one Dijkstra run (all neighbors included)
-    # result = {}
-    # tracks only necessary paths
-    # processed = {}
-
     # all results
     solution_list = {}
 
-    # run Dijkstras on ONE source
-    result = run_dijkstra(graph_1, 'S')
-    print(f"result is: {result}")
-    solution = filter_required(result, exit_node, required)
-    print(solution)
-    
+    # run Dijkstras on every source
+    for source in source_list:
+        result = run_dijkstra(graph_1, source)
+        # print(f"result is: {result}")
+        # filter result from Dijkstra's
+        solution = filter_required(result, exit_node, required)
+        # print(f"filtered: {solution}")
+        # build solution
+        solution_list[source] = solution
+        # print(f"added {solution} to final solution: {solution_list}")
 
-    # print(f"final list: {result}")
-
-    # commit message correction
+    print(f"final solution: {solution_list}")
+    return solution_list
 
 # helper: remove paths containing nodes that are not required
 def filter_required(dict, exit_node, required):
@@ -188,10 +186,10 @@ def filter_required(dict, exit_node, required):
     filtered = {}
     # check every required node's neighbor
     for node in dict:
-        print(f"TEST: printing one entry {dict[node]}")
+        # print(f"TEST: printing one entry {dict[node]}")
         if (node == exit_node) or (node in required):
             filtered[node] = dict[node]
-            print(f"added ({node} , {filtered}")
+            # print(f"added ({node} , {filtered}")
     
     return filtered
 
