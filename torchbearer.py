@@ -59,7 +59,7 @@ def select_sources(spawn, relics, exit_node):
     # add source node
     sources = []
     sources.append(spawn)
-    print(sources)
+    # print(sources)
 
     # add required nodes
     for relic in relics:
@@ -72,7 +72,7 @@ def select_sources(spawn, relics, exit_node):
     sources = set(sources)
     sources = list(sources)
 
-    print(sources)
+    # print(sources)
     return sources
 
 
@@ -162,17 +162,39 @@ def precompute_distances(graph, spawn, relics, exit_node):
     source_list = select_sources(spawn, relics, exit_node)
     print(f"source list: {source_list}")
 
-    # result of one Dijkstra run
+    # result of one Dijkstra run (all neighbors included)
     result = {}
+    # tracks only necessary paths
+    processed = {}
     # all results
     solution_list = {}
 
     # run Dijkstras on every source
     for source in source_list:
         result[source] = run_dijkstra(graph_1, source)
-        solution_list[source] = result
+        
+        print(f"RESULT ISSSSSS {result[source]}")
+        # filter out paths not needed
+        processed[source] = filter_required(result, exit_node, relics)
+        print(f"filtered {processed}")
+    
+        break
+    # print(f"final list: {result}")
 
-    print(f"final list: {result}")
+
+# helper: remove paths containing nodes that are not required
+def filter_required(dict, exit_node, relics):
+    
+    # track required paths only
+    filtered = {}
+    # check every required node's neighbor
+    for node in dict:
+        print(f"TEST: printing individual nodes {dict[node]}")
+        if (node == exit_node) or (node in relics):
+            filtered[node] = dict[node]
+            print(f"adding {filtered[node]}")
+    
+    return filtered
 
 # =============================================================================
 # PART 3
@@ -374,4 +396,4 @@ if __name__ == "__main__":
         
     required = ['B', 'C']
     select_sources('S', required, 'T')
-    # precompute_distances(graph_1, 'S', required, 'T')
+    precompute_distances(graph_1, 'S', required, 'T')
