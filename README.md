@@ -191,7 +191,7 @@
 
 ## References
 
-> Bullet list. If none beyond lecture notes, write that.
+> Bullet list. If none beyond lecture notes, write that. (redoing this part)
 
 - Dijkstra’s Algorithm with Adjacency Lists | by Joshua Clark. Used to better understand how Dijkstra's works with adjacency lists in run_dijkstra(). Verified by running run_dijkstra() after finishing implmentation, which matched the high level concepts in this article. 
 
