@@ -115,8 +115,8 @@
 > State the failure mode. Then give a concrete counter-example using specific node names
 > or costs (you may use the illustration example from the spec). Three to five bullets.
 
-- **The failure mode:** _Your answer here._
-- **Counter-example setup:** _Your answer here._
+- **The failure mode:** 
+- **Counter-example setup:** 
 - **What greedy picks:** _Your answer here._
 - **What optimal picks:** _Your answer here._
 - **Why greedy loses:** _Your answer here._

@@ -253,7 +253,6 @@ def find_optimal_route(dist_table, spawn, relics, exit_node):
     """
     pass
 
-
 def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
              cost_so_far, exit_node, best):
     """
@@ -283,6 +282,30 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     explaining why it is safe (cannot skip the optimal solution).
     This comment is graded.
     """
+
+    # traverse graph
+    
+    # base case: reached exit and visited all required nodes
+    if (current_loc == exit_node) and (len(relics_remaining) == 0):
+        return
+    
+    # recursive case: explore every neighbor
+    else:
+        # loop through every node
+        for node, inner_dict in dist_table.items():
+
+            print(f"TESTTTT: relics remaining {relics_remaining}")
+            print(f"TESTTTT: relics visited {relics_visited_order}")
+            # explore every neighbor
+            for neighbor, cost in inner_dict.items():
+                print(f"WANT TO remove {neighbor} from relics_remaining")
+                relics_remaining.remove(neighbor)
+                print(f"removed {neighbor} from relics_remaining")
+                relics_visited_order.append(neighbor)
+                print(f"added {neighbor} to relics_visited_order")            
+
+                _explore(dist_table, neighbor, relics_remaining, relics_visited_order, cost_so_far, exit_node, best)
+
 
 # =============================================================================
 # PIPELINE
@@ -382,7 +405,7 @@ if __name__ == "__main__":
         exit_node = 'F'
         select_sources(spawn, relics, exit_node)
 
-    
+    """
     graph_1 = {
         'S': [('B', 1), ('C', 2), ('D', 2)],
         'B': [('D', 1), ('T', 1)],
@@ -393,8 +416,9 @@ if __name__ == "__main__":
         
     required = ['B', 'C']
     select_sources('S', required, 'T')
-    precompute_distances(graph_1, 'S', required, 'T')
+    table = precompute_distances(graph_1, 'S', required, 'T')
 
-    """
+    temp = []
 
-    print(explain_problem())
+    _explore(table, 'S', required, temp, 0, 'T', temp)
+    
