@@ -34,7 +34,7 @@ def explain_problem():
 
     TODO
     """
-    return "This problem is not a shortest-path problem because it has an additional constraint: a given set of relic chambers (nodes) must be visited. The algorith must choose which path to take from start to finish following a set of constraints. The path must include all required relic chambers that minimizes the amount of fuel consumed. The algorithm will prioritize exploring the relic chambers that require the least amount of fuel consumption first (weights). This makes sense because the goal is to choose the path that minimizes overall fuel cost."
+    return "- This problem is not a shortest-path problem because it has an additional constraint: a given set of relic chambers (nodes) must be visited.\n- The algorith must choose which path to take from start to finish following a set of constraints. The path must include all required relic chambers that minimizes the amount of fuel consumed.\n- The algorithm will prioritize exploring the relic chambers that require the least amount of fuel consumption first (weights). This makes sense because the goal is to choose the path that minimizes overall fuel cost."
 
 # =============================================================================
 # PART 2
@@ -382,7 +382,7 @@ if __name__ == "__main__":
         exit_node = 'F'
         select_sources(spawn, relics, exit_node)
 
-    """
+    
     graph_1 = {
         'S': [('B', 1), ('C', 2), ('D', 2)],
         'B': [('D', 1), ('T', 1)],
@@ -394,3 +394,7 @@ if __name__ == "__main__":
     required = ['B', 'C']
     select_sources('S', required, 'T')
     precompute_distances(graph_1, 'S', required, 'T')
+
+    """
+
+    print(explain_problem())

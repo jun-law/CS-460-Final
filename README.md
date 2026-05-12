@@ -17,10 +17,10 @@
 > per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
-  - This problem is not a shortest-path problem because it has an additional constraint: a given set of relic chambers (nodes) must be visited. 
+  - This problem is not a shortest-path problem because it has an additional constraint: to find a minimal path from start through a given set of required relics (nodes) to the end. 
 
 - **What decision remains after all inter-location costs are known:**
-  - The algorith must choose which path to take from start to finish following a set of constraints. The path must include all required relic chambers that minimizes the amount of fuel consumed. 
+  - After all inter-location costs are known, the algorith must choose the shortest path that from start to exit that visited every required relic chamber. This chosen path will minimize the total amount of fuel consumed. 
 
 - **Why this requires a search over orders (one sentence):**
   - The algorithm will prioritize exploring the neighboring dungeon locations that require the least amount of fuel consumption first (weights). This makes sense because the goal is to choose the path that minimizes overall fuel cost. do it for whole algoirthm
