@@ -169,9 +169,9 @@
 
 > Three bullets.
 
-- **What is tracked:** _Your answer here._
-- **When it is used:** _Your answer here._
-- **What it allows the algorithm to skip:** _Your answer here._
+- **What is tracked:** The global minimum cost seen so far and the cost to get to the current node from the start node
+- **When it is used:** It is used after the check for the base case and before the recursive case.
+- **What it allows the algorithm to skip:** If the cost so far accumulated by the current node is greater than or equal to the global minimum seen so far
 
 ### Part 6b: Lower Bound Estimation
 
