@@ -283,28 +283,43 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     This comment is graded.
     """
 
-    # traverse graph
+    # run DFS on graph
     
     # base case: reached exit and visited all required nodes
     if (current_loc == exit_node) and (len(relics_remaining) == 0):
+        print("BASE CASE REACHED")
         return
     
     # recursive case: explore every neighbor
     else:
-        # loop through every node
-        for node, inner_dict in dist_table.items():
+        # access inner dictionary containing neighbor info
+        inner = dist_table[current_loc]
 
-            print(f"TESTTTT: relics remaining {relics_remaining}")
-            print(f"TESTTTT: relics visited {relics_visited_order}")
-            # explore every neighbor
-            for neighbor, cost in inner_dict.items():
-                print(f"WANT TO remove {neighbor} from relics_remaining")
+        # visit every neighbor that has not been visited yet
+        for neighbor, cost in inner.items():
+            if (neighbor not in relics_visited_order):
+
+                print(f"NEIGHBOR: {neighbor} (cost: {cost})")
                 relics_remaining.remove(neighbor)
-                print(f"removed {neighbor} from relics_remaining")
+                print(f"relics remaining: {relics_remaining}")
                 relics_visited_order.append(neighbor)
-                print(f"added {neighbor} to relics_visited_order")            
-
+                print(f"relics visited: {relics_visited_order}")
+                # update cost so far
+                cost_so_far += cost
+                print(f"COST SO FAR: {cost_so_far}\n")
+                # recursive call         
                 _explore(dist_table, neighbor, relics_remaining, relics_visited_order, cost_so_far, exit_node, best)
+            
+                # undo, backtrack to last step
+                relics_remaining.append(neighbor)
+                relics_visited_order.remove(neighbor)
+                print(f"UNDO: {neighbor}")
+
+                # prevent nan output
+                if cost_so_far == float('inf'):
+                    continue
+                # update cost
+                cost_so_far -= cost
 
 
 # =============================================================================
@@ -414,11 +429,15 @@ if __name__ == "__main__":
         'T': []
         }
         
-    required = ['B', 'C']
+    required = ['B', 'C', 'T']
     select_sources('S', required, 'T')
     table = precompute_distances(graph_1, 'S', required, 'T')
 
     temp = []
+    visited = []
 
-    _explore(table, 'S', required, temp, 0, 'T', temp)
-    
+    print("START----------------------------------------------------------------------------")
+    _explore(table, 'S', required, visited, 0, 'T', temp)
+    print("END------------------------------------------------------------------------------------------")
+
+    # test with test cases, 
