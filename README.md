@@ -158,8 +158,8 @@
 
 > Two bullets.
 
-- **Worst-case number of orders considered:** _Your answer (in terms of k)._
-- **Why:** _One-line justification._
+- **Worst-case number of orders considered:** (k + 2) * O(mlog(n))
+- **Why:** Each Dijkstra run costs O(mlog(n)), and will be run k + 2 times where k is, the number of required relic chambers, with an additional 2 to account for the start and exit nodes. 
 
 ---
 
