@@ -206,3 +206,5 @@
 - Python - Copy Lists, W3Schools. Used to understand how to use list.copy() in _explore(). Verified by seeing whether values were copies from my old list into my new list.  
 
 - Python List/Array Methods, W3Schools. Used to check correct usage of List methods in _explore(). Verified by running explore() to make sure lists were being manipulated correctly. 
+
+- The in Operator in Python (for List, String, Dictionary) | note.nkmk.me. Used to learn more about the "in" keyword for part 3a, confirmed the time complexity is O(n) for Lists. Verified with my own knowledge of data structures: every element in the list must have been checked over, which is linear. 
