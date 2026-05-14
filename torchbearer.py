@@ -480,4 +480,4 @@ if __name__ == "__main__":
 
     _explore(table, 'S', required, visited, 0, 'T', temp)
 
-    # test with test cases, 
+    

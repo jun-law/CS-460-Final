@@ -193,9 +193,14 @@
 
 > Bullet list. If none beyond lecture notes, write that. (redoing this part)
 
-- Dijkstra’s Algorithm with Adjacency Lists | by Joshua Clark. Used to better understand how Dijkstra's works with adjacency lists in run_dijkstra(). Verified by running run_dijkstra() after finishing implmentation, which matched the high level concepts in this article. 
+- Dijkstra’s Algorithm with Adjacency Lists | by Joshua Clark. Used to better understand how Dijkstra's works with adjacency lists in run_dijkstra(). Verified by running run_dijkstra() after finishing implementation, which matched the high level concepts in this article. 
 
 - heapq — Heap queue algorithm — Python 3.14.5rc1 documentation. Used to reference how to use heap methods in run_dijkstra(). Verified by testing heapq.push() and heapq.pop() works in my code. 
 
-- Python - Pair iteration in list - GeeksforGeeks. Used to better understand how to traverse pairs in run_dijkstra(). Verified correctness by printing loop for pairs during testing. 
+- Python - Pair iteration in list - GeeksforGeeks. Used to better understand how to traverse pairs in run_dijkstra(). Verified correctness by printing loop for pairs during testing
 
+- Youtube video: 7.3 Traveling Salesman Problem - Branch and Bound (Abdul Bari). Used to better understand the concept of branch and bound and what needs to be pruned. Verified by running _explore() after implementation, the logic matches with my code. 
+
+- Loop Through a Nested Dictionary in Python - GeeksforGeeks. Used to reference the syntax for how to loop through a nested dictionary. Verified by running _explore(), the correct values are accessed within my nested dictionary.
+
+- Python - Copy Lists, W3Schools. Used to understand how to use list.copy() in _explore(). Verified by seeing whether values were copies from my old list into my new list.  
