@@ -51,7 +51,7 @@ _Your entry here._
 | Part 2: Precomputation Design | 5 hours |
 | Part 3: Algorithm Correctness | 1 hour |
 | Part 4: Search Design | |
-| Part 5: State and Search Space | 4 hours |
+| Part 5: State and Search Space | 5 hours |
 | Part 6: Pruning | |
 | Part 7: Implementation | |
 | README and DEVLOG writing | |

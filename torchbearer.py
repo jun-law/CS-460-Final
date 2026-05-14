@@ -251,7 +251,18 @@ def find_optimal_route(dist_table, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    
+    # track visited nodes and optimal route
+    visited = []
+    optimal_route = []
+
+    # call recursive helper
+    _explore(dist_table, spawn, relics, visited, 0, exit_node, optimal_route)
+
+    # format solution
+    solution = min_cost, optimal_route
+    print(f"TEST: solution to find_optimal route: {solution}")
+    return solution
 
 # track min cost
 min_cost = float('inf')
@@ -291,22 +302,22 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
 
     # base case: reached exit and visited all required nodes
     if (current_loc == exit_node) and (len(relics_remaining) == 0):
-        
-        # save solution
-        solution = []
-        for relic in relics_visited_order:
-            solution.append(relic)
-    
 
-        best = solution.copy()
         print("BASE CASE REACHED")
+
+        # update best solution
+        if (len(best) != 0):
+            best.clear()
+        
+        for relic in relics_visited_order:
+            best.append(relic)
 
         print(f"TOTAL COST: {cost_so_far}")
         # update minimum cost
         min_cost = cost_so_far
         print(f"updated min_cost to: {min_cost}-----------------------------------------------")
         
-        print(f"best: {best}")
+        print(f"BEST IS: {best}---------------------------------------------------")
         return
     
     # bound function
@@ -478,6 +489,8 @@ if __name__ == "__main__":
     temp = []
     visited = []
 
-    _explore(table, 'S', required, visited, 0, 'T', temp)
+    # all arguments for explore() given inside of find_optimal_route()
+    # we call explore() in there now
+    # _explore(table, 'S', required, visited, 0, 'T', temp)
 
-    
+    find_optimal_route(table, 'S', required, 'T')
