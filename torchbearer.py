@@ -167,7 +167,7 @@ def precompute_distances(graph, spawn, required, exit_node):
 
     # run Dijkstras on every source
     for source in source_list:
-        result = run_dijkstra(graph_1, source)
+        result = run_dijkstra(graph, source)
         # print(f"result is: {result}")
         # filter result from Dijkstra's
         solution = filter_required(result, exit_node, required)
@@ -207,7 +207,7 @@ def dijkstra_invariant_check():
 
     TODO
     """
-    return "TODO"
+    return "write stuff here, placeholder for tests"
 
 
 # =============================================================================
@@ -224,7 +224,7 @@ def explain_search():
 
     TODO
     """
-    return "TODO"
+    return "write stuff here, placeholder for tests"
 
 
 # =============================================================================
@@ -405,7 +405,7 @@ def solve(graph, spawn, relics, exit_node):
     TODO
     """
     # get distances between all required nodes
-    table = precompute_distances(graph_1, spawn, required, exit_node)
+    table = precompute_distances(graph, spawn, relics, exit_node)
     # final optimal path
     final_result = find_optimal_route(table, spawn, relics, exit_node)
     print(f"FINAL RESULT IS: {final_result}")
@@ -478,15 +478,16 @@ def _run_tests():
 
 if __name__ == "__main__":
 
+    _run_tests()
     """
-        _run_tests()
+        
         
         spawn = 'A'
         relics = ['B', 'C', 'C']
         exit_node = 'F'
         select_sources(spawn, relics, exit_node)
 
-    """
+    
     graph_1 = {
         'S': [('C', 2), ('B', 1), ('D', 2)],
         'B': [('D', 1000), ('T', 1)],
@@ -509,3 +510,4 @@ if __name__ == "__main__":
     # find_optimal_route(table, 'S', required, 'T')
 
     solve(graph_1, 'S', required, 'T')
+    """

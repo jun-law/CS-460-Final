@@ -138,9 +138,9 @@
 
 | Component | Variable name in code | Data type | Description |
 |---|---|---|---|
-| Current location | | | |
-| Relics already collected | | | |
-| Fuel cost so far | | | |
+| Current location | current_loc | int | Tracks where the current node is |
+| Relics already collected | relics_visited_order | list | Tracks the order in which the relics have already been visited/collected |
+| Fuel cost so far | cost_so_far | int | Tracks cost accumulated so far from the source node to the current node |
 
 ### Part 5b: Data Structure for Visited Relics
 
