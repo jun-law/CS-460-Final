@@ -259,8 +259,12 @@ def find_optimal_route(dist_table, spawn, relics, exit_node):
     # call recursive helper
     _explore(dist_table, spawn, relics, visited, 0, exit_node, optimal_route)
 
-    # format solution
-    solution = min_cost, optimal_route
+    # optimal_route.clear()
+    # check if valid solution exists, empty case works
+    if len(optimal_route) != 0:
+        solution = min_cost, optimal_route
+    else:
+        solution = float('inf'), []
     print(f"TEST: solution to find_optimal_route(): {solution}")
     return solution
 
@@ -322,8 +326,12 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     
     # bound function
     print(f"COST SO FAR: {cost_so_far}, MIN COST: {min_cost}")
-    
-    # pruning condition
+    """
+    GRADED COMMENT: 
+    This pruning condition is always safe because the best minimum cost is ALWAYS tracked inside the global minimum variable: min_cost.
+    Each time, if the current cost is NOT better than the global minimum, the current path will be eliminated, while the global minimum
+    value remains untouched and is still the best minimum cost found so far. 
+    """
     if cost_so_far >= min_cost:
         print("PRUNING NOW!!")
         print(f"current cost: {cost_so_far} >= min cost: {min_cost}")
@@ -396,7 +404,12 @@ def solve(graph, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    # get distances between all required nodes
+    table = precompute_distances(graph_1, spawn, required, exit_node)
+    # final optimal path
+    final_result = find_optimal_route(table, spawn, relics, exit_node)
+    print(f"FINAL RESULT IS: {final_result}")
+    return final_result
 
 
 # =============================================================================
@@ -493,4 +506,6 @@ if __name__ == "__main__":
     # we call explore() in there now
     # _explore(table, 'S', required, visited, 0, 'T', temp)
 
-    find_optimal_route(table, 'S', required, 'T')
+    # find_optimal_route(table, 'S', required, 'T')
+
+    solve(graph_1, 'S', required, 'T')
