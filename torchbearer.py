@@ -104,9 +104,6 @@ def run_dijkstra(graph, source):
             neighbor = elements[0] 
             if neighbor not in distance:
                 distance[neighbor] = float('inf')  
-    
-    # print("testing")
-    # print(distance)
 
     # set start node to distance 0
     distance[source] = 0
@@ -117,9 +114,7 @@ def run_dijkstra(graph, source):
 
     while (not len(heap) == 0):
         # remove element
-        
         curr, u = heapq.heappop(heap)
-        # print(f"popped {curr}, {u} from heap")
 
         # skip non-optimal lengths
         if curr > distance[u]:
@@ -129,14 +124,10 @@ def run_dijkstra(graph, source):
         for v, w in graph[u]: 
             # if shorter path to neighbor found, update distance
             if distance[u] + w < distance[v]:
-                # print(f"distance u is {distance[u]}, distance v is {distance[v]}")
                 distance[v] = distance[u] + w
-                # print(f"adding {distance[v]}, {v} toS heap")
                 # add neighbor to heap
                 heapq.heappush(heap, (distance[v], v))
 
-    # print("final distances")
-    # print(distance)
     return distance
 
 
@@ -160,7 +151,6 @@ def precompute_distances(graph, spawn, required, exit_node):
     """
     # grab source nodes
     source_list = select_sources(spawn, required, exit_node)
-    print(f"source list: {source_list}")
 
     # all results
     solution_list = {}
@@ -168,15 +158,13 @@ def precompute_distances(graph, spawn, required, exit_node):
     # run Dijkstras on every source
     for source in source_list:
         result = run_dijkstra(graph, source)
-        # print(f"result is: {result}")
+        
         # filter result from Dijkstra's
         solution = filter_required(result, exit_node, required)
-        # print(f"filtered: {solution}")
+        
         # build solution
         solution_list[source] = solution
-        # print(f"added {solution} to final solution: {solution_list}")
-
-    print(f"final solution: {solution_list}")
+        
     return solution_list
 
 # helper: remove paths containing nodes that are not required
@@ -186,11 +174,11 @@ def filter_required(dict, exit_node, required):
     filtered = {}
     # check every required node's neighbor
     for node in dict:
-        # print(f"TEST: printing one entry {dict[node]}")
+
+        # copy required nodes into new dictionary
         if (node == exit_node) or (node in required):
             filtered[node] = dict[node]
-            # print(f"added ({node} , {filtered}")
-    
+            
     return filtered
 
 # =============================================================================
@@ -207,7 +195,7 @@ def dijkstra_invariant_check():
 
     TODO
     """
-    return "write stuff here, placeholder for tests"
+    return "write stuff here, placeholder for"
 
 
 # =============================================================================
@@ -265,7 +253,7 @@ def find_optimal_route(dist_table, spawn, relics, exit_node):
         solution = min_cost, optimal_route
     else:
         solution = float('inf'), []
-    print(f"TEST: solution to find_optimal_route(): {solution}")
+    
     return solution
 
 # track min cost
@@ -307,8 +295,6 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     # base case: reached exit and visited all required nodes
     if (current_loc == exit_node) and (len(relics_remaining) == 0):
 
-        print("BASE CASE REACHED")
-
         # update best solution
         if (len(best) != 0):
             best.clear()
@@ -316,16 +302,11 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
         for relic in relics_visited_order:
             best.append(relic)
 
-        print(f"TOTAL COST: {cost_so_far}")
         # update minimum cost
         min_cost = cost_so_far
-        print(f"updated min_cost to: {min_cost}-----------------------------------------------")
-        
-        print(f"BEST IS: {best}---------------------------------------------------")
         return
     
     # bound function
-    print(f"COST SO FAR: {cost_so_far}, MIN COST: {min_cost}")
     """
     GRADED COMMENT: 
     This pruning condition is always safe because the best minimum cost is ALWAYS tracked inside the global minimum variable: min_cost.
@@ -333,8 +314,6 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     value remains untouched and is still the best minimum cost found so far. 
     """
     if cost_so_far >= min_cost:
-        print("PRUNING NOW!!")
-        print(f"current cost: {cost_so_far} >= min cost: {min_cost}")
         return
 
     # recursive case: explore every neighbor
@@ -348,33 +327,33 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
 
                 # run into exit node early, not all relics visited
                 if (neighbor == exit_node) and (len(relics_remaining) != 0):
-                    print(f"relics remaining: {relics_remaining}")
-                    print(f"SKIP: exit node {exit_node} found early")
+                    
+                    
                     continue
                 # run into exit node, all required relics visited
                 if (neighbor == exit_node) and (len(relics_remaining) == 0):
-                   print(f"neighbor: {neighbor}, exit_node: {exit_node} --> BASE CASE")
+                   
                    # update cost
                    cost_so_far += cost
                    _explore(dist_table, neighbor, relics_remaining, relics_visited_order, cost_so_far, exit_node, best)
                    
                 # neighbor is NOT the exit node
                 else:
-                    print(f"NEIGHBOR: {neighbor} (cost: {cost})")
+                    
                     relics_remaining.remove(neighbor)
-                    print(f"relics remaining: {relics_remaining}")
+                    
                     relics_visited_order.append(neighbor)
-                    print(f"relics visited: {relics_visited_order}")
+                    
                     # update cost so far
                     cost_so_far += cost
-                    print(f"COST SO FAR: {cost_so_far}\n")
+                    
                     # recursive call         
                     _explore(dist_table, neighbor, relics_remaining, relics_visited_order, cost_so_far, exit_node, best)
                 
                     # undo, backtrack to last step
                     relics_remaining.append(neighbor)
                     relics_visited_order.remove(neighbor)
-                    print(f"UNDO: {neighbor}")
+                    
 
                     # prevent nan output
                     if cost_so_far == float('inf'):
@@ -408,7 +387,7 @@ def solve(graph, spawn, relics, exit_node):
     table = precompute_distances(graph, spawn, relics, exit_node)
     # final optimal path
     final_result = find_optimal_route(table, spawn, relics, exit_node)
-    print(f"FINAL RESULT IS: {final_result}")
+    
     return final_result
 
 
