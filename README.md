@@ -148,11 +148,11 @@
 
 | Property | Your answer |
 |---|---|
-| Data structure chosen | |
-| Operation: check if relic already collected | Time complexity: |
-| Operation: mark a relic as collected | Time complexity: |
-| Operation: unmark a relic (backtrack) | Time complexity: |
-| Why this structure fits | |
+| Data structure chosen | List |
+| Operation: check if relic already collected | Time complexity: O(n)|
+| Operation: mark a relic as collected | Time complexity: O(1)|
+| Operation: unmark a relic (backtrack) | Time complexity: O(1)|
+| Why this structure fits | Lists preserve elements in the order they are appended, which makes it convenient to track the order of when each node was visited/collected. Lists also allow for quick removal of a specific element using remove(x), and checking whether an item exists is made convenient with the "in" keyword |
 
 ### Part 5c: Worst-Case Search Space
 
