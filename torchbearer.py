@@ -285,9 +285,19 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
 
     # run DFS on graph
     
+    print(f"CURRENT NODE IS: {current_loc}================================================")
+    print(f"LENGTH OF RELICS REMAINING: {len(relics_remaining)}===============================================")
+
     # base case: reached exit and visited all required nodes
     if (current_loc == exit_node) and (len(relics_remaining) == 0):
+        # save new solution
+        solution = []
+        for relic in relics_visited_order:
+            solution.append(relic)
+        solution.append(exit_node)
+        best = solution.copy()
         print("BASE CASE REACHED")
+        print(f"BEST IS: {best} ----------------------------------------------------")
         return
     
     # recursive case: explore every neighbor
@@ -298,28 +308,47 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
         # visit every neighbor that has not been visited yet
         for neighbor, cost in inner.items():
             if (neighbor not in relics_visited_order):
-
-                print(f"NEIGHBOR: {neighbor} (cost: {cost})")
-                relics_remaining.remove(neighbor)
-                print(f"relics remaining: {relics_remaining}")
-                relics_visited_order.append(neighbor)
-                print(f"relics visited: {relics_visited_order}")
-                # update cost so far
-                cost_so_far += cost
-                print(f"COST SO FAR: {cost_so_far}\n")
-                # recursive call         
-                _explore(dist_table, neighbor, relics_remaining, relics_visited_order, cost_so_far, exit_node, best)
-            
-                # undo, backtrack to last step
-                relics_remaining.append(neighbor)
-                relics_visited_order.remove(neighbor)
-                print(f"UNDO: {neighbor}")
-
-                # prevent nan output
-                if cost_so_far == float('inf'):
+                
+                # run into exit node early, not all relics visited
+                if (neighbor == exit_node) and (len(relics_remaining) != 0):
+                    print("RAN INTO EXIT NODE, SKIPPING IT RN")
                     continue
-                # update cost
-                cost_so_far -= cost
+                # run into exit node, all required relics visited
+                if (neighbor == exit_node) and (len(relics_remaining) == 0):
+                   print(f"current node is {current_loc} and exit node is {exit_node}")
+                   print(f"NEIGHBOR IS {neighbor} RECURSE INTO EXIT!!")
+                   _explore(dist_table, neighbor, relics_remaining, relics_visited_order, cost_so_far, exit_node, best)
+                   
+                # neighbor is NOT the exit node
+                else:
+                    print(f"EXIT NODE IS: {exit_node}, NEIGHBOR IS: {neighbor}")
+                    if (exit_node == neighbor):
+                        print(f"{exit_node} and {neighbor} are equal{exit_node == neighbor}")
+                    else:
+                        print(f"{exit_node} and {neighbor} are NOT equal {exit_node == neighbor}")
+                    print(f"LEN OF RELICS REMAINING: {len(relics_remaining)}")
+                    print(f"NEIGHBOR: {neighbor} (cost: {cost})")
+                    print(f"WE ABOUT TO REMOVE NEIGHBOR {neighbor}")
+                    relics_remaining.remove(neighbor)
+                    print(f"relics remaining: {relics_remaining}")
+                    relics_visited_order.append(neighbor)
+                    print(f"relics visited: {relics_visited_order}")
+                    # update cost so far
+                    cost_so_far += cost
+                    print(f"COST SO FAR: {cost_so_far}\n")
+                    # recursive call         
+                    _explore(dist_table, neighbor, relics_remaining, relics_visited_order, cost_so_far, exit_node, best)
+                
+                    # undo, backtrack to last step
+                    relics_remaining.append(neighbor)
+                    relics_visited_order.remove(neighbor)
+                    print(f"UNDO: {neighbor}")
+
+                    # prevent nan output
+                    if cost_so_far == float('inf'):
+                        continue
+                    # update cost
+                    cost_so_far -= cost
 
 
 # =============================================================================
@@ -429,7 +458,8 @@ if __name__ == "__main__":
         'T': []
         }
         
-    required = ['B', 'C', 'T']
+    # took out exit node
+    required = ['B', 'C']
     select_sources('S', required, 'T')
     table = precompute_distances(graph_1, 'S', required, 'T')
 
