@@ -261,7 +261,7 @@ def find_optimal_route(dist_table, spawn, relics, exit_node):
 
     # format solution
     solution = min_cost, optimal_route
-    print(f"TEST: solution to find_optimal route: {solution}")
+    print(f"TEST: solution to find_optimal_route(): {solution}")
     return solution
 
 # track min cost

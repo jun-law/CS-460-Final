@@ -204,3 +204,5 @@
 - Loop Through a Nested Dictionary in Python - GeeksforGeeks. Used to reference the syntax for how to loop through a nested dictionary. Verified by running _explore(), the correct values are accessed within my nested dictionary.
 
 - Python - Copy Lists, W3Schools. Used to understand how to use list.copy() in _explore(). Verified by seeing whether values were copies from my old list into my new list.  
+
+- Python List/Array Methods, W3Schools. Used to check correct usage of List methods in _explore(). Verified by running explore() to make sure lists were being manipulated correctly. 
