@@ -253,6 +253,9 @@ def find_optimal_route(dist_table, spawn, relics, exit_node):
     """
     pass
 
+# track min cost
+min_cost = float('inf')
+
 def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
              cost_so_far, exit_node, best):
     """
@@ -282,7 +285,8 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     explaining why it is safe (cannot skip the optimal solution).
     This comment is graded.
     """
-
+    
+    global min_cost
     # run DFS on graph
 
     # base case: reached exit and visited all required nodes
@@ -296,10 +300,24 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
 
         best = solution.copy()
         print("BASE CASE REACHED")
+
         print(f"TOTAL COST: {cost_so_far}")
+        # update minimum cost
+        min_cost = cost_so_far
+        print(f"updated min_cost to: {min_cost}-----------------------------------------------")
+        
         print(f"best: {best}")
         return
     
+    # bound function
+    print(f"COST SO FAR: {cost_so_far}, MIN COST: {min_cost}")
+    
+    # pruning condition
+    if cost_so_far >= min_cost:
+        print("PRUNING NOW!!")
+        print(f"current cost: {cost_so_far} >= min cost: {min_cost}")
+        return
+
     # recursive case: explore every neighbor
     else:
         # access inner dictionary containing neighbor info
@@ -446,8 +464,8 @@ if __name__ == "__main__":
 
     """
     graph_1 = {
-        'S': [('B', 1), ('C', 2), ('D', 2)],
-        'B': [('D', 1), ('T', 1)],
+        'S': [('C', 2), ('B', 1), ('D', 2)],
+        'B': [('D', 1000), ('T', 1)],
         'C': [('B', 1), ('T', 1)],
         'D': [('B', 1), ('C', 1)],
         'T': []
