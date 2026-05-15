@@ -4,17 +4,9 @@
 **Student ID:** 132484882
 **Course:** CS 460 – Algorithms | Spring 2026
 
-> This README is your project documentation. Write it the way a developer would document
-> their design decisions , bullet points, brief justifications, and concrete examples where
-> required. You are not writing an essay. You are explaining what you built and why you built
-> it that way. Delete all blockquotes like this one before submitting.
-
 ---
 
 ## Part 1: Problem Analysis
-
-> Document why this problem is not just a shortest-path problem. Three bullet points, one
-> per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
   - A single shortest-path run from S is insufficient due to having the additional constraint that there must be a minimum cost path constructed from the start to exit that must pass through set of required nodes. A SSP run is too broad since it only records all distances from the start to every node, and will not be able to know how to select the shortest route between each required node
@@ -30,16 +22,12 @@
 
 ### Part 2a: Source Selection
 
-> List the source node types as a bullet list. For each, one-line reason.
-
 | Source Node Type | Why it is a source |
 |---|---|
 | (char) | The algorithm must start running from S, the given start node, so it must be a source |
 | (char) | Every chamber relic node is also a source node because the shortest path from it to every other source node must be computed in order to ensure each chamber relic is included in the final path | 
 
 ### Part 2b: Distance Storage
-
-> Fill in the table. No prose required.
 
 | Property | Your answer |
 |---|---|
@@ -50,8 +38,6 @@
 | Why O(1) lookup is possible | Dictionaries allow for immediate access when using a key to look up the corresponding value |
 
 ### Part 2c: Precomputation Complexity
-
-> State the total complexity and show the arithmetic. Two to three lines max.
 
 - **Number of Dijkstra runs:** k + 2
 - **Cost per run:** O(mlog(n))
@@ -111,9 +97,6 @@
 
 ### Why Greedy Fails
 
-> State the failure mode. Then give a concrete counter-example using specific node names
-> or costs (you may use the illustration example from the spec). Three to five bullets.
-
 - **The failure mode:** Running Dijkstra does not work when the graph has negative edge weights
 - **Counter-example setup:** 
 
@@ -131,18 +114,13 @@
 
 ### What the Algorithm Must Explore
 
-> One bullet. Must use the word "order."
-
-- The algorithm must explore the different orders of paths that will minimize the fuel cost traveling from the start node, visiting every required node, and ending at the exit node. 
+- The algorithm must explore the different order of paths that will minimize the fuel cost traveling from the start node, visiting every required node, and ending at the exit node. 
 
 ---
 
 ## Part 5: State and Search Space
 
 ### Part 5a: State Representation
-
-> Document the three components of your search state as a table.
-> Variable names here must match exactly what you use in torchbearer.py.
 
 | Component | Variable name in code | Data type | Description |
 |---|---|---|---|
@@ -151,8 +129,6 @@
 | Fuel cost so far | cost_so_far | int | Tracks cost accumulated so far from the source node to the current node |
 
 ### Part 5b: Data Structure for Visited Relics
-
-> Fill in the table.
 
 | Property | Your answer |
 |---|---|
@@ -164,8 +140,6 @@
 
 ### Part 5c: Worst-Case Search Space
 
-> Two bullets.
-
 - **Worst-case number of orders considered:** (k + 2) * O(mlog(n))
 - **Why:** Each Dijkstra run costs O(mlog(n)), and will be run k + 2 times where k is, the number of required relic chambers, with an additional 2 to account for the start and exit nodes. 
 
@@ -175,15 +149,11 @@
 
 ### Part 6a: Best-So-Far Tracking
 
-> Three bullets.
-
 - **What is tracked:** The global minimum cost seen so far and the cost to get to the current node from the start node
 - **When it is used:** It is used after the check for the base case and before the recursive case.
 - **What it allows the algorithm to skip:** If the cost so far accumulated by the current node is greater than or equal to the global minimum seen so far
 
 ### Part 6b: Lower Bound Estimation
-
-> Three bullets.
 
 - **What information is available at the current state:** The current node (current_loc), the fuel cost from the start to the current node (cost_so_far), the best minimum cost found so far (min_cost), the order of nodes that have been visited so far(relics_visited_order), and required nodes left to visit (relics_remaining)
 - **What the lower bound accounts for:** The lower bound accounts for potential future better possibilities, meaning the bound will change to the current cost if it is lower
@@ -192,16 +162,12 @@
 
 ### Part 6c: Pruning Correctness
 
-> One to two bullets. Explain why pruning is safe.
-
 - Pruning is safe because the global minimum cost is always tracked in min_cost, and it updates only if there is a smaller cost found
 - If a cost that is not smaller than min_cost is encountered, it is eliminated immediately, so pruning may only update min_cost to strictly smaller values 
 
 ---
 
 ## References
-
-> Bullet list. If none beyond lecture notes, write that. (redoing this part)
 
 - Dijkstra’s Algorithm with Adjacency Lists | by Joshua Clark. Used to better understand how Dijkstra's works with adjacency lists in run_dijkstra(). Verified by running run_dijkstra() after finishing implementation, which matched the high level concepts in this article. 
 

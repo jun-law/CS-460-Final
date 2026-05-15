@@ -32,9 +32,8 @@ def explain_problem():
         Your Part 1 README answers, written as a string.
         Must match what you wrote in README Part 1.
 
-    TODO
     """
-    return "- This problem is not a shortest-path problem because it has an additional constraint: a given set of relic chambers (nodes) must be visited.\n- The algorith must choose which path to take from start to finish following a set of constraints. The path must include all required relic chambers that minimizes the amount of fuel consumed.\n- The algorithm will prioritize exploring the relic chambers that require the least amount of fuel consumption first (weights). This makes sense because the goal is to choose the path that minimizes overall fuel cost."
+    return "- A single shortest-path run from S is insufficient due to having the additional constraint that there must be a minimum cost path constructed from the start to exit that must pass through set of required nodes. A SSP run is too broad since it only records all distances from the start to every node, and will not be able to know how to select the shortest route between each required node.\n - After all inter-location costs are known, the algorithm must decide which path to take from the start that visits all required nodes and ends at exit that will minimize the total cost of fuel consumed.\n - The algorithm requires a search over orders because each connection from each required source node to the other nodes may have different costs, leading to the need to check over each these different combinations to find the best path with the minimum cost."
 
 # =============================================================================
 # PART 2
@@ -90,7 +89,6 @@ def run_dijkstra(graph, source):
         Minimum cost from source to every node in graph.
         Unreachable nodes map to float('inf').
 
-    TODO
     """
 
     # dictionary: min distance from source to each node
@@ -147,7 +145,6 @@ def precompute_distances(graph, spawn, required, exit_node):
         Nested structure supporting dist_table[u][v] lookups
         for every source u your design requires.
 
-    TODO
     """
     # grab source nodes
     source_list = select_sources(spawn, required, exit_node)
@@ -193,9 +190,9 @@ def dijkstra_invariant_check():
         Your Part 3 README answers, written as a string.
         Must match what you wrote in README Part 3.
 
-    TODO
+
     """
-    return "write stuff here, placeholder for"
+    return "DO THIS PLSSSSSS"
 
 
 # =============================================================================
@@ -210,9 +207,8 @@ def explain_search():
         Your Part 4 README answers, written as a string.
         Must match what you wrote in README Part 4.
 
-    TODO
     """
-    return "write stuff here, placeholder for tests"
+    return "- **The failure mode:** Running Dijkstra does not work when the graph has negative edge weights\n. - **Counter-example setup:** **Entrance:** S | **Relic chambers:** B, C | **Exit:** T. \n- **What greedy picks:** S -> C -> B -> T. cost = 1 + 1 + 1 = 3. \n- **What optimal picks:** S -> B -> C -> T, cost = 2 + (-20) + 1 = -19. - **Why greedy loses:** Greedy loses because once it encounters the best immediate edge weight, it makes that edge a permanent part of the solution. This fails to consider future better possibilities that may reduce the cost, such as negative edges. In my example, the greedy thinks the weight of of S -> C = 1 is optimal, when the actual optimal weight from S -> C is S -> B -> C = -19. \n - The algorithm must explore the different order of paths that will minimize the fuel cost traveling from the start node, visiting every required node, and ending at the exit node. "
 
 
 # =============================================================================
@@ -237,7 +233,6 @@ def find_optimal_route(dist_table, spawn, relics, exit_node):
         (minimum_fuel_cost, ordered_relic_list)
         Returns (float('inf'), []) if no valid route exists.
 
-    TODO
     """
     
     # track visited nodes and optimal route
@@ -280,7 +275,7 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     None
         Updates best in place.
 
-    TODO
+
     Implement: base case, pruning, recursive case, backtracking.
 
     REQUIRED: Add a 1-2 sentence comment near your pruning condition
@@ -379,7 +374,7 @@ def solve(graph, spawn, relics, exit_node):
         (minimum_fuel_cost, ordered_relic_list)
         Returns (float('inf'), []) if no valid route exists.
 
-    TODO
+
     """
     # get distances between all required nodes
     table = precompute_distances(graph, spawn, relics, exit_node)
