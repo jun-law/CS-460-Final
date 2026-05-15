@@ -36,7 +36,7 @@
 | Source Node Type | Why it is a source |
 |---|---|
 | (char) | The algorithm must start running from S, the given start node, so it must be a source |
-| (char) | Every chamber relic node is also a source node because the shortest path from it to every other node must be computed in order to ensure each chamber relic is included in the final path | 
+| (char) | Every chamber relic node is also a source node because the shortest path from it to every other source node must be computed in order to ensure each chamber relic is included in the final path | 
 
 ### Part 2b: Distance Storage
 
@@ -46,7 +46,7 @@
 |---|---|
 | Data structure name | Dictionary |
 | What the keys represent | A given source node |
-| What the values represent | A list containing pairs (char, int) representing the neighboring dungeon locations (nodes) to the given source node, and the amount of fuel needed to get to it from the source |
+| What the values represent | A list containing pairs (char, int) representing the neighboring nodes to the given source node, and the cost needed to get to this neighbor from the given source |
 | Lookup time complexity | O(1) |
 | Why O(1) lookup is possible | Dictionaries allow for immediate access when using a key to look up the corresponding value |
 
