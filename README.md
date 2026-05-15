@@ -54,10 +54,10 @@
 
 > State the total complexity and show the arithmetic. Two to three lines max.
 
-- **Number of Dijkstra runs:** n + m + k
+- **Number of Dijkstra runs:** k + 2
 - **Cost per run:** O(mlog(n))
-- **Total complexity:** (n + m + k) * O(mlog(n))
-- **Justification (one line):** The total number of runs is calculated by the total source nodes (m + n + k) combined with the cost for each run, O(mlog(n))
+- **Total complexity:** (k + 2) * O(mlog(n))
+- **Justification (one line):** The total number of runs is the total number of source nodes: number required nodes + start node + exit node = k + 2, combined with the cost for each run, O(mlog(n))
 
 ---
 
