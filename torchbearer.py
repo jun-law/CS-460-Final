@@ -247,7 +247,6 @@ def find_optimal_route(dist_table, spawn, relics, exit_node):
     # call recursive helper
     _explore(dist_table, spawn, relics, visited, 0, exit_node, optimal_route)
 
-    # optimal_route.clear()
     # check if valid solution exists, empty case works
     if len(optimal_route) != 0:
         solution = min_cost, optimal_route
@@ -256,7 +255,7 @@ def find_optimal_route(dist_table, spawn, relics, exit_node):
     
     return solution
 
-# track min cost
+# track global best min cost
 min_cost = float('inf')
 
 def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
@@ -289,6 +288,7 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     This comment is graded.
     """
     
+    # best minimum cost encountered so far
     global min_cost
     # run DFS on graph
 
@@ -306,13 +306,14 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
         min_cost = cost_so_far
         return
     
-    # bound function
+    
     """
     GRADED COMMENT: 
     This pruning condition is always safe because the best minimum cost is ALWAYS tracked inside the global minimum variable: min_cost.
     Each time, if the current cost is NOT better than the global minimum, the current path will be eliminated, while the global minimum
     value remains untouched and is still the best minimum cost found so far. 
     """
+    # bound function (pruning condition)
     if cost_so_far >= min_cost:
         return
 
@@ -327,9 +328,8 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
 
                 # run into exit node early, not all relics visited
                 if (neighbor == exit_node) and (len(relics_remaining) != 0):
-                    
-                    
                     continue
+
                 # run into exit node, all required relics visited
                 if (neighbor == exit_node) and (len(relics_remaining) == 0):
                    
@@ -339,9 +339,8 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
                    
                 # neighbor is NOT the exit node
                 else:
-                    
+                    # update relics left to visit and relics visited
                     relics_remaining.remove(neighbor)
-                    
                     relics_visited_order.append(neighbor)
                     
                     # update cost so far
@@ -353,7 +352,6 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
                     # undo, backtrack to last step
                     relics_remaining.append(neighbor)
                     relics_visited_order.remove(neighbor)
-                    
 
                     # prevent nan output
                     if cost_so_far == float('inf'):

@@ -177,9 +177,10 @@
 
 > Three bullets.
 
-- **What information is available at the current state:** _Your answer here._
-- **What the lower bound accounts for:** _Your answer here._
-- **Why it never overestimates:** _Your answer here._
+- **What information is available at the current state:** The current node (current_loc), the fuel cost from the start to the current node (cost_so_far), the best minimum cost found so far (min_cost), the order of nodes that have been visited so far(relics_visited_order), and required nodes left to visit (relics_remaining)
+- **What the lower bound accounts for:** The lower bound accounts for potential future better possibilities, meaning the bound will change to the current cost if it is lower
+
+- **Why it never overestimates:** Since the function immediately eliminates (prunes) costs that are greater than or equal to the lower bound, and updates ONLY if the cost is smaller, it will never overestimate. 
 
 ### Part 6c: Pruning Correctness
 
