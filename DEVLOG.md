@@ -41,7 +41,7 @@ If I had more time, I would try to optimize my bound function in _explore(), sin
 
 ---
 
-## Final Entry – [Date]: Time Estimate
+## Final Entry – [5/14/26]: Time Estimate
 
 > Required. Estimate minutes spent per part. Honesty is expected; accuracy is not graded.
 
