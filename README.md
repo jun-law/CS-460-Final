@@ -48,13 +48,8 @@
 
 ## Part 3: Algorithm Correctness
 
-> Document your understanding of why Dijkstra produces correct distances.
-> Bullet points and short sentences throughout. No paragraphs.
 
 ### Part 3a: What the Invariant Means
-
-> Two bullets: one for finalized nodes, one for non-finalized nodes.
-> Do not copy the invariant text from the spec.
 
 - **For nodes already finalized (in S):**
   - At the beginning of each iteration, every finalized node, v in S contains the shortest path, dist[v] possible from the source, x to itself 
@@ -64,32 +59,24 @@
 
 ### Part 3b: Why Each Phase Holds
 
-> One to two bullets per phase. Maintenance must mention nonnegative edge weights.
-
 - **Initialization : why the invariant holds before iteration 1:**
-  - {Q} init {P}: assume Q is true
   - u = source, set dist[u] = 0 because it is the source, x itself
   - No nodes have been added to S yet, nodes between x and x is an empty set
 
 - **Maintenance : why finalizing the min-dist node is always correct:**
-  - {P && B} S {P}: Assume {P && B} true. 
   - If the node being processed does not have an optimal distance, skip it
-  - Check all neighbors of current node, if better path found to it from u, update neighbor's distance to smaller value
-  - Before next iteration begins: all distances of nodes have updated as appropriate, {P && B} S {P} holds
-
-  ***do i need to talk about both cases? mention nonnegative edge weights too
+  - Nodes not finalized yet: check all nonnegative edge weights of current node's neighbors, if a better path is found to it from node u, update neighbor's weight to smaller value
+  - Nodes finalized: if a node with a nonnegative weights is finalized, there is no better path that can beat it
+  - Before next iteration begins: all distances of nodes have updated as appropriate
 
 - **Termination : what the invariant guarantees when the algorithm ends:**
-  - {P && !B} => R: assume {P && !B} is true
-  - Every node, finalized and not finalized contain the shortest distance from the source to itself, and the heap is empty
+  - Every node, both finalized and not finalized, contain the shortest distance from the source to itself, and the heap is empty
   - This means the shortest paths from the source to each node is found
   - This is postcondition R, the result of Dijkstra's, {P && !B} => R holds
 
 ### Part 3c: Why This Matters for the Route Planner
 
-> One sentence connecting correct distances to correct routing decisions.
-
-- Routing decisions will be unable to locate the best path without first knowing the correct shortest distances to each location from the initial starting point.  
+- Routing decisions will be unable to locate the best path without first knowing the correct shortest distances to each location from the given source node.  
 
 ---
 
