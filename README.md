@@ -186,7 +186,8 @@
 
 > One to two bullets. Explain why pruning is safe.
 
-- _Your answer here._
+- Pruning is safe because the global minimum cost is always tracked in min_cost, and it updates only if there is a smaller cost found
+- If a cost that is not smaller than min_cost is encountered, it is eliminated immediately, so pruning may only update min_cost to strictly smaller values 
 
 ---
 
