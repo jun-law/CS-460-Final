@@ -17,14 +17,13 @@
 > per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
-  - This problem is not a shortest-path problem because it has an additional constraint: to find a minimal path from start through a given set of required relics (nodes) to the end. 
+  - A single shortest-path run from S is insufficient due to having the additional constraint that there must be a minimum cost path constructed from the start to exit that must pass through set of required nodes. A SSP run is too broad since it only records all distances from the start to every node, and will not be able to know how to select the shortest route between each required node
 
 - **What decision remains after all inter-location costs are known:**
-  - After all inter-location costs are known, the algorith must choose the shortest path that from start to exit that visited every required relic chamber. This chosen path will minimize the total amount of fuel consumed. 
+  - After all inter-location costs are known, the algorithm must decide which path to take from the start that visits all required nodes and ends at exit that will minimize the total cost of fuel consumed
 
 - **Why this requires a search over orders (one sentence):**
-  - The algorithm will prioritize exploring the neighboring dungeon locations that require the least amount of fuel consumption first (weights). This makes sense because the goal is to choose the path that minimizes overall fuel cost. do it for whole algoirthm
-  
+  - The algorithm requires a search over orders because each connection from each required source node to the other nodes may have different costs, leading to the need to check over each these different combinations to find the best path with the minimum cost.
 ---
 
 ## Part 2: Precomputation Design
