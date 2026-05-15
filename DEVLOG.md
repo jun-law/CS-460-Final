@@ -32,12 +32,12 @@ filter_required() is a helper method I added to filter out edges that are not lo
 
 ---
 
-## Entry 4 – [Date]: Post-Implementation Reflection
+## Entry 4 – [5/14/26]: Post-Implementation Reflection
 
 > Required. Written after your implementation is complete. Describe what you would
 > change or improve given more time.
 
-_Your entry here._
+If I had more time, I would try to optimize my bound function in _explore(), since I am currently using brute force to prune correctly. While my method works, time complexity is an important factor to consider when writing algorithms. By optimizing the bound function, I would be able to make my algorithm much more efficient. 
 
 ---
 
@@ -47,12 +47,12 @@ _Your entry here._
 
 | Part | Estimated Hours |
 |---|---|
-| Part 1: Problem Analysis | 25 minutes |
+| Part 1: Problem Analysis | 30 minutes |
 | Part 2: Precomputation Design | 5 hours |
 | Part 3: Algorithm Correctness | 1 hour |
-| Part 4: Search Design | |
+| Part 4: Search Design | 1 hour |
 | Part 5: State and Search Space | 30 minutes |
 | Part 6: Pruning | 5 hours |
-| Part 7: Implementation | |
-| README and DEVLOG writing | |
-| **Total** | |
+| Part 7: Implementation | 30 minutes |
+| README and DEVLOG writing | 2 hours |
+| **Total** | 15 hours, 30 min |
