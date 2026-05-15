@@ -114,17 +114,26 @@
 > State the failure mode. Then give a concrete counter-example using specific node names
 > or costs (you may use the illustration example from the spec). Three to five bullets.
 
-- **The failure mode:** 
+- **The failure mode:** Running Dijkstra does not work when the graph has negative edge weights
 - **Counter-example setup:** 
-- **What greedy picks:** _Your answer here._
-- **What optimal picks:** _Your answer here._
-- **Why greedy loses:** _Your answer here._
+
+**Entrance:** S | **Relic chambers:** B, C | **Exit:** T
+
+| From \ To | B   |  C  |  T  |
+|-----------|-----|---- |-----|
+| S         | 2   |  1  | --  |
+| B         | --  | -20 |  1  |
+| C         | 1   | --  | 1   |
+
+- **What greedy picks:** S -> C -> B -> T. cost = 1 + 1 + 1 = 3
+- **What optimal picks:** S -> B -> C -> T, cost = 2 + (-20) + 1 = -19
+- **Why greedy loses:** Greedy loses because once it encounters the best immediate edge weight, it makes that edge a permanent part of the solution. This fails to consider future better possibilities that may reduce the cost, such as negative edges. In my example, the greedy thinks the weight of of S -> C = 1 is optimal, when the actual optimal weight from S -> C is S -> B -> C = -19
 
 ### What the Algorithm Must Explore
 
 > One bullet. Must use the word "order."
 
-- _Your answer here._
+- The algorithm must explore the different orders of paths that will minimize the fuel cost traveling from the start node, visiting every required node, and ending at the exit node. 
 
 ---
 

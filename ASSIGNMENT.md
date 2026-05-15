@@ -49,7 +49,7 @@ This example clarifies the structure of the problem only. It does not suggest an
 implementation approach.
 
 **Entrance:** S | **Relic chambers:** B, C, D | **Exit:** T
-ff
+
 
 After computing cheapest inter-location travel costs, suppose you have:
 
